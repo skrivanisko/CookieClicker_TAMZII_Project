@@ -30,6 +30,7 @@ public class MainActivity extends Activity{
     boolean running;
     Handler timeHandler;
     Runnable runnable;
+    DB db;
 
     //TODO: zkraslit kod, rozdělit do funkci
     //TODO: zvazit skore v stringu, jak bude velke, bude se muset ukladat v tisicich, možná hodit do floatu a nasobit litrem, pak string
@@ -49,6 +50,8 @@ public class MainActivity extends Activity{
 
         scoreText = findViewById(R.id.Score);
 
+        db = new DB(this);
+
         gameStartTime = Calendar.getInstance().getTimeInMillis();
         score = 0;
         clickPower = 1;
@@ -62,6 +65,8 @@ public class MainActivity extends Activity{
         //preferencesEditor.apply();
         score = Long.parseLong(preferences.getString("score", "error score"));
         scoreText.setText(Long.toString(score));
+
+
     }                                                       //////////// INIT
 
 
@@ -75,6 +80,28 @@ public class MainActivity extends Activity{
         score+=clickPower;
 
         scoreText.setText(Long.toString(score));
+
+            //Toast.makeText(this, db.selectByName("granny").getProduction(), Toast.LENGTH_SHORT).show();
+
+            //Helper h = db.selectByName("granny");
+            //h.setProduction(20);
+
+        //Toast.makeText(this, Boolean.toString(db.update(h)), Toast.LENGTH_SHORT).show();
+
+            //Toast.makeText(this, db.selectByName("granny").get(0).toString(), Toast.LENGTH_SHORT).show();
+
+            /*Helper h = db.select("granny");
+
+           Toast.makeText(this, h.toString(), Toast.LENGTH_SHORT).show();
+           h.setProduction(10);
+        Toast.makeText(this, Boolean.toString(db.update(h)), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, db.select("granny").toString(), Toast.LENGTH_SHORT).show();*/
+
+        Toast.makeText(this, Integer.toString(db.getProduction()), Toast.LENGTH_SHORT).show();
+
+        for(Helper h : db.select())
+            Toast.makeText(this, h.toString(), Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -88,8 +115,6 @@ public class MainActivity extends Activity{
         preferencesEditor.putString("timeOnPause", timeOnPause);
         preferencesEditor.putString("score", Long.toString(score));
         preferencesEditor.apply();
-
-        Toast.makeText(this, "Succesfully paused", Toast.LENGTH_LONG).show();
         super.onPause();
     }
 
@@ -116,7 +141,7 @@ public class MainActivity extends Activity{
         long currTime = Calendar.getInstance().getTimeInMillis()/1000;
 
         long differenceSeconds = (currTime - timePauseSeconds);
-        Toast.makeText(this, Long.toString(differenceSeconds), Toast.LENGTH_LONG).show();
+
 
         score+= differenceSeconds*production;
 
