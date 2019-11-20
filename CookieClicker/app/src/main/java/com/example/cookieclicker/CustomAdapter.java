@@ -13,11 +13,11 @@ import java.util.ArrayList;
 class CustomAdapter extends BaseAdapter {
     Context context;
     ArrayList<Helper> helpers;
-    int flags[];
+    int imgs[] = {R.drawable.clicker, R.drawable.granny, R.drawable.bakery, R.drawable.factory, R.drawable.mine};
     LayoutInflater inflter;
 
     public CustomAdapter(Context applicationContext, ArrayList<Helper> obj) {
-        this.context = context;
+        this.context = applicationContext;
         this.helpers = obj;
         inflter = (LayoutInflater.from(applicationContext));
     }
@@ -48,13 +48,15 @@ class CustomAdapter extends BaseAdapter {
 
         ImageView icon = (ImageView)convertView.findViewById(R.id.imageView);
 
-        country.setText(helpers.get(position).getName());
+        country.setText(helpers.get(position).getName().toUpperCase());
         production.setText(Integer.toString(helpers.get(position).getProduction()));
         cost.setText(Integer.toString(helpers.get(position).getCost()));
         count.setText(Integer.toString(helpers.get(position).getCount()));
         prodPS.setText(Integer.toString(helpers.get(position).getCount()*helpers.get(position).getProduction())+" Cookies/s");
 
-        icon.setImageResource(R.drawable.place_holder);
+
+
+        icon.setImageResource(imgs[position]);
         return convertView;
     }
 }

@@ -25,6 +25,9 @@ public class MainActivity extends Activity{
     Handler timeHandler;
     Runnable runnable;
     DB db;
+    TextView productionLabel;
+
+    public int[] startCost = {50, 500, 1250, 2500, 5000};
 
     //TODO: zkraslit kod, rozdělit do funkci
     //TODO: zvazit skore v stringu, jak bude velke, bude se muset ukladat v tisicich, možná hodit do floatu a nasobit litrem, pak string
@@ -52,32 +55,47 @@ public class MainActivity extends Activity{
         production = 1;
         running = true;
         timeHandler = new Handler();
-
+        productionLabel = findViewById(R.id.Production);
         preferences = getSharedPreferences("preferences", MODE_PRIVATE);
-        //SharedPreferences.Editor preferencesEditor = preferences.edit();
-        //preferencesEditor.putString("score", Long.toString(score));
-        //preferencesEditor.apply();
+
+        /*SharedPreferences.Editor preferencesEditor = preferences.edit();
+        preferencesEditor.putString("score", Long.toString(score));
+        String timeOnPause = Long.toString(Calendar.getInstance().getTimeInMillis()/1000);
+        preferencesEditor.putString("timeOnPause", timeOnPause);
+        preferencesEditor.apply();*/
+
         score = Long.parseLong(preferences.getString("score", "error score"));
         scoreText.setText(Long.toString(score));
+        productionLabel.setText(Integer.toString(production) + " Cookies/s");
 
-        resetGame();
-    }                                                       //////////// INIT
+        //resetGame();
+
+
+    }//////////// INIT
+
+
 
     public void resetGame(){
         for (Helper h : db.select()){
             Helper help;
             help = h;
             h.setCount(0);
+            h.setCost(startCost[help.getId()-1]);
 
             db.update(h);
         }
-        score=0; //TODO:Smazat shared preferences, zastaví jen produkci ale score se usí mazat v shared prefs
+        score=0;
+        production=0;
+        SharedPreferences.Editor preferencesEditor = preferences.edit();
+        preferencesEditor.putString("score", Long.toString(score));
+        preferencesEditor.apply();
     }
 
 
     public void updateScore(){
         score+=production;
         scoreText.setText(Long.toString(score));
+        productionLabel.setText(Integer.toString(production) + " Cookies/s");
     }
 
     public void CookieClick(View view) {
@@ -85,10 +103,6 @@ public class MainActivity extends Activity{
 
         scoreText.setText(Long.toString(score));
 
-        Toast.makeText(this, Integer.toString(db.getProduction()), Toast.LENGTH_SHORT).show();
-
-        for(Helper h : db.select())
-            Toast.makeText(this, h.toString(), Toast.LENGTH_SHORT).show();
 
     }
 
@@ -103,7 +117,7 @@ public class MainActivity extends Activity{
         preferencesEditor.putString("timeOnPause", timeOnPause);
         preferencesEditor.putString("score", Long.toString(score));
         preferencesEditor.apply();
-        super.onPause();
+
     }
 
     public void RunTimeListener(){
@@ -139,5 +153,9 @@ public class MainActivity extends Activity{
         Intent i = new Intent(this, ShopActivity.class);
         i.putExtra("score", Long.toString(score));
         startActivity(i);
+    }
+
+    public void resetClick(View view) {
+        resetGame();
     }
 }

@@ -52,24 +52,21 @@ public class ShopActivity extends Activity {
         }
 
         if (currScore >= helperToUpdate.getCost()){
-            helperToUpdate.setCount(helperToUpdate.getCount()+1);
-            db.update(helperToUpdate);
             currScore-=helperToUpdate.getCost();
+            helperToUpdate.setCount(helperToUpdate.getCount()+1);
+            helperToUpdate.setCost(helperToUpdate.getCost()*2);
+            db.update(helperToUpdate);
+
+
+            SharedPreferences.Editor preferencesEditor = preferences.edit();
+            preferencesEditor.putString("score", Long.toString(currScore));
+            preferencesEditor.apply();
+
         } else Toast.makeText(this, "Not Enough Cookies", Toast.LENGTH_SHORT).show();
     }
 
     public void updateList(){
         customAdapter = new CustomAdapter(getApplicationContext(), db.select()); //TODO: Dodelat pole obrázků
         list.setAdapter(customAdapter);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        SharedPreferences.Editor preferencesEditor = preferences.edit();
-        preferencesEditor.putString("score", Long.toString(currScore));
-        preferencesEditor.apply();
-        super.onPause();
     }
 }
