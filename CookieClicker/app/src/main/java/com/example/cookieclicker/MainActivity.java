@@ -1,8 +1,7 @@
 package com.example.cookieclicker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,12 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.time.Instant;
 import java.util.Calendar;
-import java.util.Date;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class MainActivity extends Activity{
 
@@ -66,9 +60,19 @@ public class MainActivity extends Activity{
         score = Long.parseLong(preferences.getString("score", "error score"));
         scoreText.setText(Long.toString(score));
 
-
+        resetGame();
     }                                                       //////////// INIT
 
+    public void resetGame(){
+        for (Helper h : db.select()){
+            Helper help;
+            help = h;
+            h.setCount(0);
+
+            db.update(h);
+        }
+        score=0; //TODO:Smazat shared preferences, zastaví jen produkci ale score se usí mazat v shared prefs
+    }
 
 
     public void updateScore(){
@@ -80,22 +84,6 @@ public class MainActivity extends Activity{
         score+=clickPower;
 
         scoreText.setText(Long.toString(score));
-
-            //Toast.makeText(this, db.selectByName("granny").getProduction(), Toast.LENGTH_SHORT).show();
-
-            //Helper h = db.selectByName("granny");
-            //h.setProduction(20);
-
-        //Toast.makeText(this, Boolean.toString(db.update(h)), Toast.LENGTH_SHORT).show();
-
-            //Toast.makeText(this, db.selectByName("granny").get(0).toString(), Toast.LENGTH_SHORT).show();
-
-            /*Helper h = db.select("granny");
-
-           Toast.makeText(this, h.toString(), Toast.LENGTH_SHORT).show();
-           h.setProduction(10);
-        Toast.makeText(this, Boolean.toString(db.update(h)), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, db.select("granny").toString(), Toast.LENGTH_SHORT).show();*/
 
         Toast.makeText(this, Integer.toString(db.getProduction()), Toast.LENGTH_SHORT).show();
 
@@ -143,7 +131,13 @@ public class MainActivity extends Activity{
         long differenceSeconds = (currTime - timePauseSeconds);
 
 
+        production = db.getProduction();
         score+= differenceSeconds*production;
+    }
 
+    public void enterShop(View view) {
+        Intent i = new Intent(this, ShopActivity.class);
+        i.putExtra("score", Long.toString(score));
+        startActivity(i);
     }
 }
