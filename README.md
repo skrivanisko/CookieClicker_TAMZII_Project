@@ -14,21 +14,14 @@ There are many boosts availible.
 
 
 <b>Features:</b>
-> Multimedia - Audio
 
-> Shared Preferences
-
-> Advanced GUI
-
-> Gestures
-
-> Canvas
-
-> DB
-
-> Sensors maybe
-
-> Bonuses based on location??
-
-> using buttons
+<b>Features:</b>
+> Multimedia - Audio                      |✖|
+> Shared Preferences                      |✔|
+> Advanced GUI - ListView                 |✔|
+> Canvas                                  |✖|
+> DB                                      |✔|
+>                                         |✖|
+――――――――――――――――――――――――――――――――――――――――――――――
+Sum                                        3/6 
 
