@@ -13,20 +13,16 @@ There are many boosts availible.
 
 
 
-<b>Features:</b>
+<b>Features:</b> 3/6
 
-> Multimedia - Audio                      |✖|
+✖ Audio
 
-> Shared Preferences                      |✔|
+✔ SharedPrefs
 
-> Advanced GUI - ListView                 |✔|
+✔ Database
 
-> Canvas                                  |✖|
+✖ Canvas
 
-> DB                                      |✔|
+✔ Listview - AdvancedGUI
 
->                                         |✖|
-
-――――――――――――――――――――――――――――――――――――――――――――――
-Sum                                        3/6 
-
+✖
