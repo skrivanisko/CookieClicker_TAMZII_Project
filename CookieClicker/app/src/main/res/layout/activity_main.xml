@@ -6,56 +6,66 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/Headline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="TextView"
-            android:textSize="25dp" />
+        <com.example.cookieclicker.MyCanvas
+            android:id="@+id/Canvas"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"/>
 
-        <ImageView
-            android:id="@+id/Cookie"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:onClick="CookieClick"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/Score"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="TextView"
-            android:textSize="32dp" />
+            <TextView
+                android:id="@+id/Headline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="25dp" />
 
-        <TextView
-            android:id="@+id/Production"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="production" />
+            <ImageView
+                android:id="@+id/Cookie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="CookieClick"
+                tools:srcCompat="@tools:sample/avatars" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:onClick="enterShop"
-            android:text="Shop" />
+            <TextView
+                android:id="@+id/Score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="32dp" />
 
-        <Button
-            android:id="@+id/resetButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="resetClick"
-            android:text="Reset" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/Production"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="production" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="enterShop"
+                android:text="Shop" />
+
+            <Button
+                android:id="@+id/resetButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="resetClick"
+                android:text="Reset" />
+        </LinearLayout>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,6 +26,7 @@ public class MainActivity extends Activity{
     Runnable runnable;
     DB db;
     TextView productionLabel;
+    MyCanvas myCanvas;
 
     public int[] startCost = {50, 500, 1250, 2500, 5000};
 
@@ -68,7 +69,10 @@ public class MainActivity extends Activity{
         scoreText.setText(Long.toString(score));
         productionLabel.setText(Integer.toString(production) + " Cookies/s");
 
-        //resetGame();
+        myCanvas = findViewById(R.id.Canvas);
+
+        animationListener();
+
 
 
     }//////////// INIT
@@ -120,7 +124,7 @@ public class MainActivity extends Activity{
 
     }
 
-    public void RunTimeListener(){
+    public void runTimeListener(){
         timeHandler.postDelayed(runnable = new Runnable() {
             @Override
             public void run() {
@@ -130,11 +134,21 @@ public class MainActivity extends Activity{
         },1000);
     }
 
+    public void animationListener(){
+        timeHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                myCanvas.animated();
+                timeHandler.postDelayed(this, 33);
+            }
+        },33);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
 
-        RunTimeListener();
+        runTimeListener();
 
         score = Long.parseLong(preferences.getString("score", "error score"));
 
