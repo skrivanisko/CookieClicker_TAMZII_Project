@@ -13,22 +13,16 @@ There are many boosts availible.
 
 
 
-<b>Features:</b>
-> Multimedia - Audio
+<b>Features:</b> 3/6
 
-> Shared Preferences
+✖ Audio
 
-> Advanced GUI
+✔ SharedPrefs
 
-> Gestures
+✔ Database
 
-> Canvas
+✖ Canvas
 
-> DB
+✔ Listview - AdvancedGUI
 
-> Sensors maybe
-
-> Bonuses based on location??
-
-> using buttons
-
+✖
