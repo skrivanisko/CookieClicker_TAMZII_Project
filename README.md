@@ -13,7 +13,7 @@ There are many boosts availible.
 
 
 
-<b>Features:</b> 3/6
+<b>Features:</b> 6/6
 
 ✔ Audio
 
