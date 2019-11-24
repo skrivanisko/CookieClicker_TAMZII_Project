@@ -15,14 +15,14 @@ There are many boosts availible.
 
 <b>Features:</b> 3/6
 
-✖ Audio
+✔ Audio
 
 ✔ SharedPrefs
 
 ✔ Database
 
-✖ Canvas
+✔ Canvas
 
 ✔ Listview - AdvancedGUI
 
-✖
+✔ Threads
