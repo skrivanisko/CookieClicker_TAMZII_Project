@@ -13,7 +13,7 @@ public class MyCanvas extends View {
     int width;
     int height;
 
-    Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.cookie);;
+    Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.cookie);
 
     ArrayList<AnimationObject> listObj = new ArrayList<>();
 
@@ -58,8 +58,10 @@ public class MyCanvas extends View {
 
     public void animated(){
 
-        for(AnimationObject obj : listObj)
+        for(AnimationObject obj : listObj){
             obj.move(width,height);
+        }
+
 
         invalidate();
     }

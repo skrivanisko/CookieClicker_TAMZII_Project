@@ -27,18 +27,19 @@ public class MainActivity extends Activity{
     DB db;
     TextView productionLabel;
     MyCanvas myCanvas;
+    SoundProducer musicPlayer;
 
     public int[] startCost = {50, 500, 1250, 2500, 5000};
 
-    //TODO: zkraslit kod, rozdělit do funkci
-    //TODO: zvazit skore v stringu, jak bude velke, bude se muset ukladat v tisicich, možná hodit do floatu a nasobit litrem, pak string
-    //TODO: podívat se k Radoskovi na SQL Lite a udělat dělníky, store a retrieve z db a nasobit tim produkci
-    //TODO: napadovat canvas a další věci
+    //TODO 0: zvuky
+    //TODO 1: design
 
     @Override                                               /////////// INIT
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        musicPlayer = new SoundProducer(this);
 
         cookie = findViewById(R.id.Cookie);
         cookie.setImageResource(R.drawable.cookie);
@@ -53,13 +54,13 @@ public class MainActivity extends Activity{
         gameStartTime = Calendar.getInstance().getTimeInMillis();
         score = 0;
         clickPower = 1;
-        production = 1;
+        production = 0;
         running = true;
         timeHandler = new Handler();
         productionLabel = findViewById(R.id.Production);
         preferences = getSharedPreferences("preferences", MODE_PRIVATE);
 
-        /*SharedPreferences.Editor preferencesEditor = preferences.edit();
+        /*SharedPreferences.Editor preferencesEditor = preferences.edit();                       //RENEW SHARED PREFS
         preferencesEditor.putString("score", Long.toString(score));
         String timeOnPause = Long.toString(Calendar.getInstance().getTimeInMillis()/1000);
         preferencesEditor.putString("timeOnPause", timeOnPause);
@@ -73,7 +74,7 @@ public class MainActivity extends Activity{
 
         animationListener();
 
-
+        musicPlayer.mainMusic();
 
     }//////////// INIT
 
@@ -107,7 +108,7 @@ public class MainActivity extends Activity{
 
         scoreText.setText(Long.toString(score));
 
-
+        musicPlayer.cookieClick();
     }
 
     @Override
@@ -121,6 +122,8 @@ public class MainActivity extends Activity{
         preferencesEditor.putString("timeOnPause", timeOnPause);
         preferencesEditor.putString("score", Long.toString(score));
         preferencesEditor.apply();
+
+        musicPlayer.pause();
 
     }
 
@@ -147,6 +150,8 @@ public class MainActivity extends Activity{
     @Override
     protected void onResume() {
         super.onResume();
+
+        musicPlayer.resume();
 
         runTimeListener();
 

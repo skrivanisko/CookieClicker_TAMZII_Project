@@ -18,6 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
@@ -25,14 +26,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:shadowColor="#6D3737"
+                android:shadowRadius="20"
                 android:text="TextView"
-                android:textSize="25dp" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="35dp" />
 
             <ImageView
                 android:id="@+id/Cookie"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="center|center_horizontal|center_vertical"
                 android:onClick="CookieClick"
                 tools:srcCompat="@tools:sample/avatars" />
 
@@ -41,6 +45,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:shadowColor="#5C3030"
+                android:shadowRadius="15"
                 android:text="TextView"
                 android:textSize="32dp" />
 
@@ -49,22 +55,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:shadowColor="#00422525"
+                android:shadowRadius="12"
                 android:text="production" />
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#E2613636"
                 android:gravity="center"
                 android:onClick="enterShop"
-                android:text="Shop" />
+                android:text="Shop"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/resetButton"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#E1503030"
                 android:onClick="resetClick"
-                android:text="Reset" />
+                android:text="Reset"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
     </FrameLayout>
 

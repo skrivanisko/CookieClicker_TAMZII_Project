@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#503A3A"
         android:orientation="vertical">
 
         <TextView
@@ -17,12 +18,33 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Shop"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/cookieCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="cookies"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/production"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="production"
+            android:textSize="15sp"
+            android:textColor="#ffffff" />
 
         <ListView
             android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="#9C704949"
+            android:divider="?attr/dividerVertical" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

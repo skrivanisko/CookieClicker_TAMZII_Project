@@ -2,6 +2,7 @@ package com.example.cookieclicker;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Rect;
 
 public class AnimationObject {
@@ -31,6 +32,7 @@ public class AnimationObject {
     }
 
     public void draw(Bitmap bmp, Canvas c){
+
         c.drawBitmap(bmp, null,
                 new Rect(x,y,x+size,y+size), null);
     }

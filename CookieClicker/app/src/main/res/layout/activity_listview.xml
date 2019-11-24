@@ -25,7 +25,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="lol" />
+            android:text="lol"
+            android:textColor="#ffffff" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,7 +38,8 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="25dp"
-                android:text="Production:" />
+                android:text="Production:"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/production"
@@ -45,7 +47,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:paddingRight="25dp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 
@@ -59,7 +62,8 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="25dp"
-                android:text="Cost:" />
+                android:text="Cost:"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/cost"
@@ -67,7 +71,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:paddingRight="25dp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 
@@ -81,7 +86,8 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="25dp"
-                android:text="Count:" />
+                android:text="Count:"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/count"
@@ -89,7 +95,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:paddingRight="25dp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textColor="#ffffff" />
         </LinearLayout>
 
         <TextView
@@ -97,7 +104,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="#ffffff" />
 
         <ImageView
             android:id="@+id/imageView2"
